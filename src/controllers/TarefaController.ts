@@ -5,6 +5,8 @@ import express, {Router, Request, Response } from 'express';
 //Onde ficará a lógica de entrada e saída (HTTP).
 const tarefaRepository = new TarefaRepository();
 export class TarefaController { 
+    
+    
     // GET
     async Get(req: Request, res:Response){
         try{
@@ -38,7 +40,9 @@ export class TarefaController {
         return res.status(500).json({ error: "Erro ao inserir nova tarefa" });
     }} 
 
-    // DELETE =======================================
+    //fazer verificador de ID mais geral
+
+    // DELETE 
     async Delete(req: Request, res: Response){
  
     const IDParaExcluir = parseInt(req.params.id);
@@ -64,49 +68,32 @@ export class TarefaController {
         return res.status(500).json({ error: "Id n encontrado" });
     }
 }
-
-    
-}
-
-
-// DELETE 
-
-/*
-// PUT =======================================
-router.put('/:id',  async (req: Request, res: Response) => {
+// PUT ===
+    async Put(req: Request, res: Response){
+    // entradas
     const IDParaEditar:number = parseInt(req.params.id);
-    // mantém. 
     const  {titulo, concluida} = req.body;
-
-    console.log(`Tentando editar a tarefa ${IDParaEditar} para o novo título: ${titulo}`);
-    console.log("ID que chegou na URL:", req.params.id);
-
-    // vallidação do ID de entrada 
+    // vallidação das entradas
      
     if (isNaN(IDParaEditar)) {
         return res.status(400).json({ error: "ID inválido. Use um número na URL." });
     }
-    // Validação título
     if (!titulo || titulo.trim().length === 0) {
             return res.status(400).json({ error: "O novo título deve ser preenchido." });
     }
-    // pega o tamanho do array para garantir que o id está entre eles, caso o id pedido para edição seja maior que os valores da coluna.
     try {
-        //update
-        const updateByID = 'UPDATE tarefas SET titulo = $1, concluida = $2 WHERE id = $3 RETURNING *';
-        const result = await pool.query(updateByID,[titulo,concluida, IDParaEditar]);    
-        if(result.rowCount === 0){
+        const resultado = await tarefaRepository.atualizar(IDParaEditar,titulo,concluida)
+        if(resultado && resultado.rowCount === 0){
             return res.status(404).json({ error: `Tarefa com ID ${IDParaEditar} não encontrada.` });
         }
-        
         return res.status(200).json({correct: `Id ${IDParaEditar} locallizado e modificado com sucesso.`})
     }
     catch(error:any){
-        
-        console.log("--- ERRO NO POST ---");
+        console.log("--- ERRO NO PUT ---");
         console.log("Mensagem:", error.message);
         console.log("Código:", error.code);
         console.log("--------------------");
-
      }
-}) */
+}
+
+}

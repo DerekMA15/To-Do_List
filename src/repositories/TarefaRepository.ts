@@ -16,11 +16,11 @@ export class TarefaRepository {
     async deletar(id: number){
         const querySQL = 'DELETE FROM tarefas WHERE id = $1'
         const result = await pool.query(querySQL,[id])
-        return result;
+        return result;// Retornamos o objeto completo do 'pg' para o controller usar o rowCount
     }
 
     async atualizar(id: number, titulo: string, concluida: boolean) {
-        const querySQL = 'UPDATE tarefas SET  titulo = $1, concluida = $2, WHERE id = $3 RETURNING *';
+        const querySQL = 'UPDATE tarefas SET  titulo = $1, concluida = $2 WHERE id = $3 RETURNING *';
         const result = await pool.query(querySQL, [titulo, concluida, id]);
         return result; // Retornamos o objeto completo do 'pg' para o controller usar o rowCount
     }
