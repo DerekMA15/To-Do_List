@@ -1,5 +1,5 @@
 import express, {Router, Request, Response } from 'express';
-import { TarefaRepository } from '../repositories/TarefaRepository';
+import { TarefaRepository } from '../repositories/ToDoRepository';
 /*Onde ficariam as regras de negócio mais complexas. Para este projeto, podemos começar 
 integrando a lógica no Controller e Repository para não criar arquivos demais de uma vez. */
 

@@ -1,4 +1,4 @@
-import router from './entities/Tarefa.router';
+import router from './entities/ToDo.router';
 import { Tarefa } from './entities/Tarefa';
 import express, {Request, Response } from 'express';
 
