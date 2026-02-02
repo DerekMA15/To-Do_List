@@ -11,6 +11,7 @@ app.use('/tarefas', router)
 
 app.post('/tarefas', router);
 app.get('/tarefas',router);
+
 app.delete('/tarefas/', router);
 app.put('/tarefas/', router);
 

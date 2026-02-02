@@ -1,6 +1,6 @@
 Atividades de Programação Backend (Node.js/Express/PostgreSQL)
 
-As atividades a seguir simulam tarefas comuns no dia a dia de um desenvolvedor backend, desde manipulação de dados em memória até a integração com um banco de dados relacional e a construção de APIs robustas.
+Desafio de fazer um todo list baseado no desafio proposto [Desafio Vagas: API de tarefas com Spring Boot!](https://www.youtube.com/watch?v=IjProDV001o)
 
 ---
 🚀 Nível 1: Básico (Foco em Lógica, Arrays e Estrutura de Servidor)
