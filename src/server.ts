@@ -1,3 +1,4 @@
+import 'dotenv/config'
 import router from './entities/ToDo.router';
 import { Tarefa } from './entities/Tarefa';
 import express, {Request, Response } from 'express';

@@ -1,8 +1,10 @@
-[] renomear: 
-    []renomear classes para formateCase em inglês 
-    []renomear as funcções do controller
-    []renomear as funcções do tarefa.router
-    []renomear as funcções do repositories
+[] blindar todo nosso banco de dados em uma etapa de segurança usando o .env
+
+[x] renomear: 
+    [x]renomear classes para formateCase em inglês 
+    [x]renomear as funcções do controller
+    [x]renomear as funcções do tarefa.router
+    [x]renomear as funcções do repositories
 
     renomear nomes das variaveis incluidas dentro do método e o método classe TarefaRepository:
         [x] método buscartodas by searchALL
