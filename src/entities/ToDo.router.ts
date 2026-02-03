@@ -13,10 +13,10 @@ router.get ('/', toDoController.routeGet);
 // POST ===
 router.post('/', toDoController.routePost);
 
-// DELETE =======================================
+// DELETE ===
 router.delete('/:id', toDoController.routeDelete);
 
-// PUT =======================================
+// PUT ===
 router.put('/:id', toDoController.routePut)
 
 export default router; // para importar é: import router from "./..", pois definimos esse modulo como router 

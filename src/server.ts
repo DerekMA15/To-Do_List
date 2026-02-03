@@ -1,6 +1,6 @@
 import 'dotenv/config'
 import router from './entities/ToDo.router';
-import { Tarefa } from './entities/Tarefa';
+import { ITask } from './entities/Task';
 import express, {Request, Response } from 'express';
 
 const app = express();

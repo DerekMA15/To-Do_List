@@ -35,3 +35,11 @@
     [x]renomear o arq. TarefaRepository p/ ToDO..
     [x]renomear o arq. TarefaControllers p/ ToDO..
     [x]renomear o arq. Tarefa.Router p/ ToDO..
+
+[x] definir uma interface para usar como molde (Task.ts)
+
+[] criar um tratamento global de erros com um midleware e substituir nossos try/catch
+
+[] criar um validador de Dados (input validation)
+
+[] documentar e organizar no nosso README desde como baixar dependências à utilizar nosso BD

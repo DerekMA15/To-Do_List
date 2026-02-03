@@ -1,16 +1,18 @@
 import pool from '../database'
+import { ITask } from '../entities/Task';
 
 // Onde ficará exclusivamente o acesso ao banco de dados (SQL).
 export class ToDoRepository { 
-    async searchALL() { // buscarTodas = searchALL
+    async searchALL():Promise<ITask[]> { // buscarTodas = searchALL
         const result = await pool.query('SELECT * FROM tarefas ORDER BY id ASC'); 
-        return result.rows; 
+        return result.rows as ITask[]; 
     }
 
-    async newToDo( titulo: string){ // não mudar no momento o nome de titulo para title porque o Postgress é bem sensivel a essas mudanças
+    async newToDo( titulo: string): Promise<ITask> { // não mudar no momento o nome de titulo para title porque o Postgress é bem sensivel a essas mudanças
         const querySQL = 'INSERT INTO tarefas (titulo) VALUES ($1) RETURNING *'
         const result = await pool.query(querySQL, [titulo])
-        return result.rows[0];
+        return result.rows[0] as ITask;
+        
     }
 
     async remove(id: number){
@@ -26,4 +28,3 @@ export class ToDoRepository {
     }
 
 }
-
