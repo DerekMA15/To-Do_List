@@ -1,48 +1,69 @@
-Atividades de Programação Backend (Node.js/Express/PostgreSQL)
+# To-Do List: Backend Roadmap
+Este projeto é uma aplicação de gerenciamento de tarefas (To-Do List) desenvolvida para documentar a evolução no ecossistema Node.js e TypeScript. O repositório não é apenas um código funcional, mas um roteiro técnico que vai da manipulação básica de memória até a persistência robusta em bancos de dados relacionais.
 
-As atividades a seguir simulam tarefas comuns no dia a dia de um desenvolvedor backend, desde manipulação de dados em memória até a integração com um banco de dados relacional e a construção de APIs robustas.
+## Tecnologias e Ferramentas
+- **Runtime:** Node.js
+- **Linguagem:** TypeScript (Tipagem forte e interfaces)
+- **Framework:** Express
+- **Banco de Dados:** PostgreSQL
+- **Segurança:** Autenticação via JWT (JSON Web Tokens)
 
----
-🚀 Nível 1: Básico (Foco em Lógica, Arrays e Estrutura de Servidor)
+## Arquitetura e Evolução Técnica
+O projeto foi estruturado em marcos de aprendizado, permitindo visualizar a evolução da complexidade da aplicação:
+### Fase 1: Volatilidade e Memória
+Nesta etapa inicial, o foco foi entender o ciclo de vida de uma requisição HTTP.
+- **Armazenamento:** Arquitetura e Evolução Técnica Uso de Arrays globais para salvar tarefas.
 
-Atividade (Problema)	Parâmetros/Tecnologias	Correlação com o Dia a Dia
-1. Servidor "Hello World" Básico	Node.js, Express, JavaScript/TypeScript (Configuração inicial)	Configuração de Ambiente: Montar o projeto e o servidor é o primeiro passo de qualquer projeto ou feature nova.
-2. Manipulação de Rota Simples	Express (GET), Manipulação de Query Params (e.g., /saudacao?nome=Visitante)	Endpoints de Leitura: Criar rotas simples para buscar dados estáticos ou personalizar respostas. Simula a criação de um endpoint básico.
-3. Gerenciamento de Lista em Memória	Express (GET/POST/DELETE), Array de objetos (em memória), TypeScript (Interfaces)	Caching e Estruturas de Dados: Lidar com listas de dados (e.g., usuários, produtos) e manipular seus estados (adicionar, remover) antes da persistência em banco. Essencial para lógica de negócios.
-4. Validação de Dados Simples	Lógica JavaScript/TypeScript, Express (POST), checar se campos obrigatórios estão presentes.	Tratamento de Requisições: Garantir que o dado enviado pelo frontend ou por outro serviço esteja no formato esperado. Previne erros.
+- **Conceito chave:** Entender que os dados são perdidos ao reiniciar o servidor (volatilidade).
 
----
+- **Operações:** Implementação de GET para listagem e POST para criação básica.
 
-🌟 Nível 2: Intermediário (Foco em Banco de Dados, Persistência e Rotas CRUD)
-Atividade (Problema)	Parâmetros/Tecnologias	Correlação com o Dia a Dia
-1. Configuração do Banco de Dados	PostgreSQL, Pacote de conexão (e.g., pg ou um ORM como TypeORM/Sequelize), Criação de tabela simples.	Setup de Infraestrutura: Conectar a aplicação ao banco de dados e garantir a estrutura de dados (schema).
-2. API de Gerenciamento de Tarefas (CRUD)	Node.js, Express, PostgreSQL. Rotas: GET (todas/por ID), POST, PUT (ou PATCH), DELETE.	Desenvolvimento de APIs: A tarefa CRUD (Create, Read, Update, Delete) é o pilar da maioria dos sistemas. Você estará construindo um endpoint completo para um recurso (como um recurso/usuario ou recurso/produto).
-3. Filtragem e Paginação Básica	PostgreSQL (cláusulas WHERE e LIMIT/OFFSET), Express (leitura de Query Params para filtro).	Otimização de Consultas: Servir grandes volumes de dados de forma eficiente, aplicando filtros (e.g., tarefas concluídas) e limitando a quantidade de registros por página.
-4. Implementação de Middleware	Express (Middleware), TypeScript (tipagem de requisição). Ex: Middleware para registrar o tempo da requisição.	Processamento de Requisições: Lógica que precisa ser executada antes de chegar na rota principal, como autenticação, log ou transformação de dados.
+### Fase 2: Persistência Relacional (PostgreSQL)
 
----
+A transição para um banco de dados real introduziu a necessidade de lidar com processos assíncronos e integridade de dados.
 
-💡 Nível 3: Avançado (Foco em Segurança, Relações Complexas e Padrões)
-Atividade (Problema)	Parâmetros/Tecnologias	Correlação com o Dia a Dia
-1. Autenticação Simples (JWT)	Biblioteca para JWT (e.g., jsonwebtoken), Express (Middleware de autenticação), PostgreSQL (tabela de usuários).	Segurança da Aplicação: Proteger rotas (endpoints) para que apenas usuários autorizados possam acessá-las. É uma das tarefas de segurança mais importantes.
-2. Relações de Banco de Dados	PostgreSQL (relações One-to-Many/Many-to-Many), ORM/SQL avançado. Ex: Usuários têm Várias Postagens (One-to-Many).	Modelagem de Dados: Lidar com a complexidade do mundo real, onde as entidades (tabelas) estão interconectadas. Exige conhecimento de joins e modelagem.
-3. Lançamento de Erros Padronizado	Express (Error Handling Global), Criação de classes de erro customizadas (TypeScript), Retorno de códigos HTTP corretos (400, 401, 404, 500).	Robustez e Experiência do Desenvolvedor (DX): Garantir que a API retorne mensagens de erro claras e o código de status correto. Essencial para quem consome a API.
-4. Testes de Integração	Framework de Testes (e.g., Jest ou Mocha/Chai), Testar as rotas da API com o banco de dados.	Qualidade de Código: Garantir que o código funcione como esperado e que futuras modificações não quebrem funcionalidades existentes. É uma prática padrão no desenvolvimento profissional.
-🎯 Explicação e Correlação com Tasks Diárias
+- **Querying:** Uso de SQL puro ou Query Builders para interagir com o PostgreSQL.
 
-O trabalho de um programador backend, especialmente no desenvolvimento de APIs (Application Programming Interfaces), envolve a construção de serviços que lidam com dados e lógica de negócios.
+- **Modelagem:** Definição de Schemas (ID, Título, Status de Conclusão, Timestamps).
 
-    Lidar com um Simples Array (Nível 1): Antes de salvar dados no banco, o programador frequentemente manipula dados em memória. Isso pode ser a organização de uma lista de itens para o frontend, a validação de um JSON recebido, ou o uso de estruturas de dados (arrays, mapas) para cache de dados. A rota 3. Gerenciamento de Lista em Memória simula essa manipulação de dados brutos.
+- **Segurança:** Início do tratamento de dados sensíveis e sanitização de inputs para evitar SQL Injection.
 
-    Do Array ao SQL/Framework (Nível 2 e 3): Quando os dados precisam ser permanentes, a tarefa evolui para interagir com o PostgreSQL. As atividades de CRUD (Nível 2) são o coração do backend, pois representam as ações básicas (criação de um novo usuário, leitura de um produto, atualização de um status). O uso de frameworks (como o Express) e de bibliotecas de banco de dados abstrai a complexidade, permitindo que o foco seja na lógica de negócios (ex: O que acontece quando um pedido é concluído?).
+### Fase 3: Refatoração e TypeScript Avançado
 
-    O Código Não é o Suficiente (Nível 3): No dia a dia, um programador gasta tempo em questões não apenas de lógica pura, mas de qualidade, segurança e manutenção.
+Refatoração do código para padrões de projeto mais limpos.
 
-        Autenticação (Nível 3): Garantir que apenas o dono de um dado possa alterá-lo.
+- **Interfaces:** Definição rigorosa de contratos para os objetos de Tarefa.
 
-        Erros Padronizados (Nível 3): Fazer o serviço se comunicar bem com outros serviços ou com o frontend, informando claramente onde a falha ocorreu.
+- **Middlewares:** Camada intermediária para validação de dados antes de chegarem ao Controller.
 
-        Testes (Nível 3): Assegurar que o que funciona hoje continuará funcionando amanhã.
+## Destaque Técnico: O Fluxo de Dados
 
+Para um desenvolvedor backend, o entendimento do fluxo de dados é essencial. No main.py (ou nos controladores do Node), o fluxo segue este padrão:
 
-        para dar run no postgresql : sudo systemctl start postgresql
+1. **Request:** O cliente envia um JSON via corpo da requisição.
+
+2. **Validation:** O Middleware verifica se o campo titulo existe e é uma string.
+
+3. **Processing:** O serviço processa a lógica (ex: não permitir títulos duplicados).
+
+4. **Persistence:** O dado é enviado ao PostgreSQL via INSERT.
+
+5. **Response:** Retorno do status 201 Created com o objeto persistido.
+
+## Como Executar o Projeto
+
+- Clone o repositório:
+git clone https://github.com/DerekMA15/To-Do_List.git
+- Instale as dependências:
+    bash```
+    npm install
+        ```
+- Configure o Banco de Dados:
+    Certifique-se de que o PostgreSQL está ativo em seu sistema Linux:
+    bash```
+    sudo systemctl start postgresql
+        ```
+- Inicie em modo de desenvolvimento:
+    Bash```
+    npm run dev
+      ```
